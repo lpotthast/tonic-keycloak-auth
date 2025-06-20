@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+package whoami;
+
+service WhoAmIService {
+  rpc WhoAmI(WhoAmIRequest) returns (WhoAmIResponse);
+}
+
+message WhoAmIRequest {
+}
+
+message WhoAmIResponse {
+  string keycloak_uuid = 1;
+  string keycloak_username = 2;
+  int64 token_valid_for_seconds = 3;
+}
+
+service AmIAuthenticatedService {
+  rpc AmIAuthenticated(AmIAuthenticatedRequest) returns (AmIAuthenticatedResponse);
+}
+
+message AmIAuthenticatedRequest {
+}
+
+message AmIAuthenticatedResponse {
+  bool authenticated = 1;
+  string message = 2;
+}

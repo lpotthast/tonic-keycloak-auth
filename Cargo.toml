@@ -1,0 +1,45 @@
+[package]
+name = "tonic-keycloak-auth"
+version = "0.1.0"
+edition = "2024"
+rust-version = "1.85.0"
+authors = ["Lukas Potthast <privat@lukas-potthast.de>"]
+license = "MIT OR Apache-2.0"
+readme = "README.md"
+repository = "https://github.com/lpotthast/tonic-keycloak-auth"
+description = """
+Protect tonic RPC services with a JWT emitted by Keycloak.
+"""
+categories = ["authentication", "web-programming"]
+keywords = ["keycloak", "auth", "jwt", "oidc", "tonic"]
+
+[features]
+default = ["default-tls", "reqwest/charset", "reqwest/http2", "reqwest/macos-system-configuration"]
+default-tls = ["reqwest/default-tls"]
+rustls-tls = ["reqwest/rustls-tls"]
+
+[dependencies]
+atomic-time = "0.1.5"
+educe = { version = "0.6.0", default-features = false, features = ["Debug"] }
+futures = "0.3.31"
+http = "1.2.0"
+jsonwebtoken = "9.3.0"
+nonempty = { version = "0.11.0", features = ["std"] }
+reqwest = { version = "0.12.12", features = ["json"], default-features = false }
+serde = "1.0.217"
+serde_json = "1.0.134"
+serde_with = "3.12.0"
+snafu = "0.8.5"
+time = "0.3.37"
+tonic = "0.13.1"
+tonic-middleware = "0.3.0"
+tokio = "1.42.0"
+tracing = "0.1.41"
+try-again = "0.2.0"
+typed-builder = "0.21.0"
+url = "2.5.4"
+uuid = { version = "1.11.0", features = ["v7"] }
+
+[dev-dependencies]
+assertr = "0.3.1"
+uuid = { version = "1.16.0", features = ["v7", "serde"] }
